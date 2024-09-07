@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "minecartsplitting",
+	"version": "${version}",
+	"name": "MinecartSplitting",
+	"description": "Adds crafting recipes for allowing the split of minecarts.",
+	"authors": [
+		"Oth3r"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/minecart-splitting"
+	},
+	"license": "MIT",
+	"icon": "assets/minecartsplitting/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"one.oth3r.minecartsplitting.MinecartSplitting"
+		],
+		"fabric-datagen": [
+			"one.oth3r.minecartsplitting.ModDataGenerator"
+		]
+	},
+	"mixins": [
+		"minecartsplitter.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": ">=${min_minecraft_version} <=${minecraft_version}",
+		"java": "*",
+		"fabric-api": "*"
+	}
+}
