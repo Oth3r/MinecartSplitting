@@ -8,7 +8,8 @@
 		"Oth3r"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/minecart-splitting"
+		"homepage": "https://modrinth.com/mod/minecart-splitting",
+		"issues": "https://github.com/Oth3r/MinecartSplitting/issues"
 	},
 	"license": "MIT",
 	"icon": "assets/minecartsplitting/icon.png",
