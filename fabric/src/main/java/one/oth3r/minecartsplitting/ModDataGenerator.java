@@ -4,13 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
-
-import java.util.function.Consumer;
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -27,7 +25,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 		}
 
 		@Override
-		public void generate(Consumer<RecipeJsonProvider> exporter) {
+		public void generate(RecipeExporter exporter) {
 			ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.TNT).input(Items.TNT_MINECART)
 					.criterion(hasItem(Items.TNT_MINECART), conditionsFromItem(Items.TNT_MINECART))
 					.offerTo(exporter, Identifier.of(MinecartSplitting.MOD_ID,getRecipeName(Items.TNT_MINECART)));
