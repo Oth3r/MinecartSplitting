@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecartsplitter:hopper_minecart"
+        "recipe": "minecartsplitting:hopper_minecart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecartsplitter:hopper_minecart"
+      "minecartsplitting:hopper_minecart"
     ]
   }
 }
