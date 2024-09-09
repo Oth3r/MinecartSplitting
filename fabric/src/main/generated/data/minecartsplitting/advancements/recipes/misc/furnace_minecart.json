@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecartsplitter:furnace_minecart"
+        "recipe": "minecartsplitting:furnace_minecart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecartsplitter:furnace_minecart"
+      "minecartsplitting:furnace_minecart"
     ]
   }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecartsplitter:chest_minecart"
+        "recipe": "minecartsplitting:chest_minecart"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecartsplitter:chest_minecart"
+      "minecartsplitting:chest_minecart"
     ]
   }
 }

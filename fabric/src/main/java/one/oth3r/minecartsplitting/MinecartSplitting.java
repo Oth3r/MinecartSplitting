@@ -6,9 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MinecartSplitting implements ModInitializer {
-	public static final String MOD_ID = "minecartsplitter";
+	public static final String MOD_ID = "minecartsplitting";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 
 	@Override
 	public void onInitialize() {
