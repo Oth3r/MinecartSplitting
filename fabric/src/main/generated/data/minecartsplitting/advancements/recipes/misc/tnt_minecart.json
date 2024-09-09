@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:tnt_minecart"
-            ]
+            "items": "minecraft:tnt_minecart"
           }
         ]
       },

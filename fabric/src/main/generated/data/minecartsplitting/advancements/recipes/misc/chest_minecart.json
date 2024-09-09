@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:chest_minecart"
-            ]
+            "items": "minecraft:chest_minecart"
           }
         ]
       },

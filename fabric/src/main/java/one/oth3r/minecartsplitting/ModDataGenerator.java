@@ -8,7 +8,10 @@ import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -19,9 +22,8 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 
 	private static class RecipeProvider extends FabricRecipeProvider {
 
-
-		public RecipeProvider(FabricDataOutput output) {
-			super(output);
+		public RecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+			super(output, registriesFuture);
 		}
 
 		@Override
