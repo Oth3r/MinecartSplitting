@@ -116,8 +116,3 @@ tasks.register('publishCurseForge', TaskPublishCurseForge) {
 	mainFile.releaseType = "release"
 	mainFile.addEnvironment("client", "server")
 }
-
-tasks.register('publishToModSites') {
-	publishToModSites.dependsOn modrinth
-	publishToModSites.dependsOn publishCurseForge
-}
