@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecartsplitter:tnt_minecart"
+        "recipe": "minecartsplitting:tnt_minecart"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecartsplitter:tnt_minecart"
+      "minecartsplitting:tnt_minecart"
     ]
   },
   "sends_telemetry_event": false
