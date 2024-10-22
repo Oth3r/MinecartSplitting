@@ -1,5 +1,6 @@
 package one.oth3r.minecartsplitting.mixin;
 
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(MinecartItem.class)
 public abstract class MinecartItemMixin extends Item {
 
-    @Shadow @Final private AbstractMinecartEntity.Type type;
+    @Shadow @Final private EntityType<? extends AbstractMinecartEntity> type;
 
     public MinecartItemMixin(Settings settings) {
         super(settings);
@@ -21,7 +22,7 @@ public abstract class MinecartItemMixin extends Item {
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
         // don't empty if its already empty
-        if (this.type.equals(AbstractMinecartEntity.Type.RIDEABLE)) return super.getRecipeRemainder(stack);
+        if (this.type.equals(EntityType.MINECART)) return super.getRecipeRemainder(stack);
         // return the mine cart
         return Items.MINECART.getDefaultStack();
     }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "minecraft:furnace_minecart"
-    }
+    "minecraft:furnace_minecart"
   ],
   "result": {
     "count": 1,
