@@ -1,8 +1,8 @@
 plugins {
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
-	id "com.modrinth.minotaur" version "2.+"
-	id 'net.darkhax.curseforgegradle' version '1.1.+'
+
+	id "me.modmuss50.mod-publish-plugin" version "0.8.4"
 }
 
 version = project.mod_version
@@ -89,31 +89,35 @@ publishing {
 	}
 }
 
-import com.modrinth.minotaur.dependencies.ModDependency
+publishMods {
+	changelog = file('../changelog.md').text
+	type = STABLE
 
-modrinth {
-	token = env.fetchOrNull('MODRINTH')
-	projectId = 'xQUc45Pf'
-	versionNumber = project.mod_version
-	versionName = "v${project.mod_version} [Fabric]"
-	uploadFile = remapJar
-	gameVersions = project.minecraft_versions.split(",").toList()
-	loaders = ['fabric', 'quilt']
-	dependencies = [
-			new ModDependency('P7dR8mSH', 'required') // Creates a new required dependency on Fabric API
-	]
-	changelog = file('changelog.md').text
-}
+	file = remapJar.archiveFile
+	modLoaders.add("fabric")
+	modLoaders.add("quilt")
 
-import net.darkhax.curseforgegradle.TaskPublishCurseForge
+	version = mod_version
+	displayName = "v${mod_version} [Fabric]"
 
-tasks.register('publishCurseForge', TaskPublishCurseForge) {
-	apiToken = env.fetchOrNull('CURSEFORGE')
+	curseforge {
+		accessToken = env.fetchOrNull('CURSEFORGE')
+		projectId = "1098273"
+		projectSlug = "minecart-splitting"
+		minecraftVersions.addAll(minecraft_versions.split(",").toList())
 
-	def mainFile = upload(1098273, remapJar)
-	mainFile.changelog = file('changelog.md')
-	mainFile.displayName = "v${project.mod_version} [Fabric]"
-	mainFile.addModLoader("fabric", "quilt")
-	mainFile.releaseType = "release"
-	mainFile.addEnvironment("client", "server")
+		requires("fabric-api")
+
+		announcementTitle = "Download from CurseForge"
+	}
+
+	modrinth {
+		accessToken = env.fetchOrNull('MODRINTH')
+		projectId = "xQUc45Pf"
+		minecraftVersions.addAll(minecraft_versions.split(",").toList())
+
+		requires("fabric-api")
+
+		announcementTitle = "Download from Modrinth"
+	}
 }
