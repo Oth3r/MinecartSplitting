@@ -2,16 +2,16 @@ package one.oth3r.minecartsplitting;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.recipe.RecipeExporter;
-import net.minecraft.data.recipe.RecipeGenerator;
-import net.minecraft.item.Items;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.util.Identifier;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.world.item.Items;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.Identifier;
+import org.jspecify.annotations.NonNull;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -23,31 +23,30 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 	}
 
 	private static class RecipeProvider extends FabricRecipeProvider {
-
-		public RecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+		public RecipeProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
 			super(output, registriesFuture);
 		}
 
 		@Override
-		protected RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup wrapperLookup, RecipeExporter recipeExporter) {
-			return new RecipeGenerator(wrapperLookup, recipeExporter) {
+		protected net.minecraft.data.recipes.@NonNull RecipeProvider createRecipeProvider(HolderLookup.@NonNull Provider wrapperLookup, RecipeOutput recipeExporter) {
+			return new net.minecraft.data.recipes.RecipeProvider(wrapperLookup, recipeExporter) {
 				@Override
-				public void generate() {
-					createShapeless(RecipeCategory.MISC, Items.TNT).input(Items.TNT_MINECART)
-							.criterion(hasItem(Items.TNT_MINECART), conditionsFromItem(Items.TNT_MINECART))
-							.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE,Identifier.of(MinecartSplitting.MOD_ID,getRecipeName(Items.TNT_MINECART))));
+				public void buildRecipes() {
+					shapeless(RecipeCategory.MISC, Items.TNT).requires(Items.TNT_MINECART)
+							.unlockedBy(getHasName(Items.TNT_MINECART), has(Items.TNT_MINECART))
+							.save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MinecartSplitting.MOD_ID, getSimpleRecipeName(Items.TNT_MINECART))));
 
-					createShapeless(RecipeCategory.MISC, Items.CHEST).input(Items.CHEST_MINECART)
-							.criterion(hasItem(Items.CHEST_MINECART), conditionsFromItem(Items.CHEST_MINECART))
-							.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE,Identifier.of(MinecartSplitting.MOD_ID,getRecipeName(Items.CHEST_MINECART))));
+					shapeless(RecipeCategory.MISC, Items.CHEST).requires(Items.CHEST_MINECART)
+							.unlockedBy(getHasName(Items.CHEST_MINECART), has(Items.CHEST_MINECART))
+							.save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MinecartSplitting.MOD_ID, getSimpleRecipeName(Items.CHEST_MINECART))));
 
-					createShapeless(RecipeCategory.MISC, Items.HOPPER).input(Items.HOPPER_MINECART)
-							.criterion(hasItem(Items.HOPPER_MINECART), conditionsFromItem(Items.HOPPER_MINECART))
-							.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE,Identifier.of(MinecartSplitting.MOD_ID,getRecipeName(Items.HOPPER_MINECART))));
+					shapeless(RecipeCategory.MISC, Items.HOPPER).requires(Items.HOPPER_MINECART)
+							.unlockedBy(getHasName(Items.HOPPER_MINECART), has(Items.HOPPER_MINECART))
+							.save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MinecartSplitting.MOD_ID, getSimpleRecipeName(Items.HOPPER_MINECART))));
 
-					createShapeless(RecipeCategory.MISC, Items.FURNACE).input(Items.FURNACE_MINECART)
-							.criterion(hasItem(Items.FURNACE_MINECART), conditionsFromItem(Items.FURNACE_MINECART))
-							.offerTo(exporter, RegistryKey.of(RegistryKeys.RECIPE,Identifier.of(MinecartSplitting.MOD_ID,getRecipeName(Items.FURNACE_MINECART))));
+					shapeless(RecipeCategory.MISC, Items.FURNACE).requires(Items.FURNACE_MINECART)
+							.unlockedBy(getHasName(Items.FURNACE_MINECART), has(Items.FURNACE_MINECART))
+							.save(output, ResourceKey.create(Registries.RECIPE, Identifier.fromNamespaceAndPath(MinecartSplitting.MOD_ID, getSimpleRecipeName(Items.FURNACE_MINECART))));
 				}
 			};
 		}

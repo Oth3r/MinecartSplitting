@@ -1,11 +1,9 @@
 package one.oth3r.minecartsplitting.mixin;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.vehicle.AbstractMinecartEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.MinecartItem;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
+import net.minecraft.world.item.*;
+import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -13,18 +11,18 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(MinecartItem.class)
 public abstract class MinecartItemMixin extends Item {
 
-    @Shadow @Final private EntityType<? extends AbstractMinecartEntity> type;
+    @Shadow @Final private EntityType<? extends AbstractMinecart> type;
 
-    public MinecartItemMixin(Settings settings) {
+    public MinecartItemMixin(Properties settings) {
         super(settings);
     }
 
     @Override
-    public ItemStack getRecipeRemainder(ItemStack stack) {
+    public @Nullable ItemStackTemplate getCraftingRemainder(ItemStack stack) {
         // don't empty if its already empty
-        if (this.type.equals(EntityType.MINECART)) return super.getRecipeRemainder(stack);
+        if (this.type.equals(EntityType.MINECART)) return super.getCraftingRemainder(stack);
         // return the mine cart
-        return Items.MINECART.getDefaultStack();
+        return ItemStackTemplate.fromNonEmptyStack(Items.MINECART.getDefaultInstance());
     }
 
 }
