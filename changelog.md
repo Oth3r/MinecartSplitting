@@ -1,2 +1,2 @@
-# v1.0.2.0
-Now supports 26.1!
+# v1.0.2.1
+Updated versioning for 26.x
