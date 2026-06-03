@@ -1,0 +1,20 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:item",
+      "values": [
+        "hoppergadgetry:grated_hopper_minecart",
+        "hoppergadgetry:grated_hopper"
+      ]
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "hoppergadgetry:grated_hopper_minecart"
+  ],
+  "result": {
+    "id": "hoppergadgetry:grated_hopper"
+  }
+}

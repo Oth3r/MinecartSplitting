@@ -1,0 +1,42 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:registry_contains",
+      "registry": "minecraft:item",
+      "values": [
+        "hoppergadgetry:chute_minecart",
+        "hoppergadgetry:chute"
+      ]
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chute_minecart": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hoppergadgetry:chute_minecart"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecartsplitting:chute_minecart"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chute_minecart"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecartsplitting:chute_minecart"
+    ]
+  }
+}
