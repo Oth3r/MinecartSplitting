@@ -10,7 +10,6 @@
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "hoppergadgetry:chute_minecart"
   ],

@@ -1,2 +1,2 @@
-# v1.0.2.2
-* added support for the mod [Hopper Gadgetry](https://modrinth.com/mod/hopper-gadgetry)
+# v1.0.2.3
+* removed "Hello Fabric World" being said from the console

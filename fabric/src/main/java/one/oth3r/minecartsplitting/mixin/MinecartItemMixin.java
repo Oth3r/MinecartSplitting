@@ -1,6 +1,7 @@
 package one.oth3r.minecartsplitting.mixin;
 
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.vehicle.minecart.AbstractMinecart;
 import net.minecraft.world.item.*;
 import org.jspecify.annotations.Nullable;
@@ -20,7 +21,7 @@ public abstract class MinecartItemMixin extends Item {
     @Override
     public @Nullable ItemStackTemplate getCraftingRemainder(ItemStack stack) {
         // don't empty if its already empty
-        if (this.type.equals(EntityType.MINECART)) return super.getCraftingRemainder(stack);
+        if (this.type.equals(EntityTypes.MINECART)) return super.getCraftingRemainder(stack);
         // return the mine cart
         return ItemStackTemplate.fromNonEmptyStack(Items.MINECART.getDefaultInstance());
     }

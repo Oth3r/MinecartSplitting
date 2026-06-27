@@ -62,7 +62,7 @@ public class ModDataGenerator implements DataGeneratorEntrypoint {
 			JsonObject recipe = new JsonObject();
 			recipe.add("fabric:load_conditions", registryContainsItems(ingredientId, resultId));
 			recipe.addProperty("type", "minecraft:crafting_shapeless");
-			recipe.addProperty("category", "misc");
+//			recipe.addProperty("category", "misc");
 
 			JsonArray ingredients = new JsonArray();
 			ingredients.add(ingredientId);
